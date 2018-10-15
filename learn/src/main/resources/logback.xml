@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration debug="true" scan="true" scanPeriod="15 seconds">
+    <!-- Variables -->
+    <property name="logFolder" value="/Users/amanpreet.singh/IdeaProjects/Experiment/dropwizard/logs"/>
+    <property name="format.access" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %X{requestId} %m%n"/>
+    <property name="custom.format" value="%-5p [%d] %X{requestId} %thread %c{3}: %m%n"/>
+    <!-- End Variables -->
+
+    <!-- Create appenders and their async counterparts now -->
+    <appender name="Stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${custom.format}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="Stdout-async" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="Stdout"/>
+    </appender>
+
+    <appender name="data" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Append>true</Append>
+        <File>${logFolder}/dataProcessor.log</File>
+        <encoder>
+            <pattern>${custom.format}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logFolder}/dataProcessor.log.%d{yyyy-MM-dd}</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="com.aman" level="info" additivity="false">
+        <appender-ref ref="data"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="Stdout"/>
+    </root>
+
+</configuration>

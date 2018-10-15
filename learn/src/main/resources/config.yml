@@ -1,0 +1,19 @@
+name: Experiment
+owner: Aman
+server:
+  applicationConnectors:
+    - type: http
+      port: 8190
+      idleTimeout: 30 seconds
+      acceptQueueSize: 1024
+      reuseAddress: true
+      #      outputBufferSize: 32KiB
+      #      minBufferPoolSize: 64 bytes
+      #      bufferPoolIncrement: 1KiB
+      #      maxBufferPoolSize: 64KiB
+      #      acceptorThreads: 1
+      #      selectorThreads: 2
+#      soLingerTime: 600s
+  adminConnectors:
+    - type: http
+      port: 8191
