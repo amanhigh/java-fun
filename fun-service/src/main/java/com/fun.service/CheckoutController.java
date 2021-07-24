@@ -28,7 +28,7 @@ public class CheckoutController {
                             "")
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
             description = "Add product",
-            content = {@Content(mediaType = "application/text", schema = @Schema(implementation = String.class))}),
+            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = String.class))}),
             @ApiResponse(responseCode = "400", description = "Invalid customer id supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Product/Customer not found", content = @Content)})
     @PostMapping("/customer/{customerId}/product/{productId}")

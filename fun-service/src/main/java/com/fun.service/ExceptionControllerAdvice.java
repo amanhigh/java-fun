@@ -13,14 +13,15 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import javax.validation.constraints.NotNull;
 
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Slf4j
 @RestControllerAdvice
 public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(FunException.class)
-    public ResponseEntity<ServiceError> handlePaymentException(FunException exception) {
+    public ResponseEntity<ServiceError> handleFunException(FunException exception) {
         log.error("Fun Service Failed", exception);
         ServiceError serviceError = ServiceError.from(exception);
         switch (exception.getErrorCode()) {
