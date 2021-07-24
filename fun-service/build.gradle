@@ -9,6 +9,11 @@ application {
     applicationDefaultJvmArgs = ['-Duser.timezone=UTC']
 }
 
+test {
+    useJUnitPlatform()
+}
+
+
 dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
