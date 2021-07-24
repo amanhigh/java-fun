@@ -16,7 +16,12 @@ public class CheckoutServiceImpl implements CheckoutService {
 
         /* Check and add Product */
         //TODO: Add Product Check and price
-        baskets.get(customerId).addProduct(productId, 100f);
+        if (productId.startsWith("P")) {
+            baskets.get(customerId).addProduct(productId, 100f);
+        } else {
+            var msg = "Invalid Product Id: " + productId;
+            throw new FunException(FunException.ErrorCode.PRODUCT_NOT_FOUND, msg, msg);
+        }
     }
 
     public Optional<Basket> getBasket(String customerId) {
