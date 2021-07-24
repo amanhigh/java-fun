@@ -2,4 +2,5 @@ rootProject.name = 'java-fun'
 
 include 'core'
 include 'learn'
+include 'fun-service'
 
